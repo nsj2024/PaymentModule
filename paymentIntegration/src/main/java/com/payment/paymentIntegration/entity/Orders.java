@@ -18,7 +18,7 @@ import static com.payment.paymentIntegration.entity.Status.PENDING;
 public class Orders {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long orderId;
     private String email;
     private String contact;
@@ -26,6 +26,5 @@ public class Orders {
     private String name;
     private String address;
     private Status status = PENDING;
-
 
 }
