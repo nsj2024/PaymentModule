@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Payment } from '../payment';
 import { PaymentService } from '../services/paymentService.service';
+import { Router } from '@angular/router';
 
 interface Product {
   name: string;
@@ -22,7 +23,7 @@ interface Product {
 
 export class PaymentPageComponent {
    
-  constructor(private paymentservice:PaymentService)
+  constructor(private paymentservice:PaymentService , private route:Router)
   {
       this.paymentservice = this.paymentservice;
   }
@@ -66,23 +67,26 @@ export class PaymentPageComponent {
     return this.products.reduce((acc, product) => acc + (product.price * product.quantity), 0);
   }
 
-  shippingDetails = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    phonenumber: '',
-    billingAddress: '',
-  };
+  // shippingDetails = {
+  //   firstname: '',
+  //   lastname: '',
+  //   email: '',
+  //   phonenumber: '',
+  //   billingAddress: '',
+  // };
 
-  payment : Payment = {orderId :3, name : "lsdflfs ",email : "doflamingolaw2023@gmail.com",contact : " kekwelkelk",status: "PENDING", amount : this.calculateTotal(), address : "jrejfedf"}
+  payment : Payment = {orderId : 3, name : "bharath ",email : "doflamingolaw2023@gmail.com",contact : " ",status: "PENDING", amount : this.calculateTotal(), address : " "}
   
    
   payNow(payment: Payment, event: Event): void {
-    event.stopPropagation(); // Prevent triggering row click event
-    // Add logic to handle the payment action
-    this.paymentservice.createPaymentLink(payment).subscribe(data => {
-      console.log(data);
-    
+    event.stopPropagation(); 
+    payment.amount = this.calculateTotal();
+    this.paymentservice.createOrder(payment).subscribe(order => {
+      console.log(order)
+      this.paymentservice.createPaymentLink(order).subscribe(data => {
+        console.log(data.short_url);
+        window.location.href = data.short_url;
+      })
     })
     
    
