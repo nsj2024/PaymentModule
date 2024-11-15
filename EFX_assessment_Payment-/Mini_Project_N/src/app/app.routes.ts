@@ -4,5 +4,5 @@ import { PaystatusComponent } from './paystatus/paystatus.component';
 
 export const routes: Routes = [
     { path : '', component : PaymentPageComponent},
-    { path : 'home', component : PaystatusComponent}
+    { path : 'status', component : PaystatusComponent}
 ];

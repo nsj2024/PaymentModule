@@ -5,7 +5,7 @@ export class Payment {
     amount: number;
     address: string;
     status: string;
-    orderId : number;
+  
   
     constructor(
       name: string,
@@ -14,10 +14,10 @@ export class Payment {
       amount: number,
       address: string,
       status: string,
-      orderId : number
+   
     ) {
 
-      this.orderId = orderId
+    
       this.name = name;
       this.email = email;
       this.contact = contact;

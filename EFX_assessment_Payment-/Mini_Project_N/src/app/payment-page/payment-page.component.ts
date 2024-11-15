@@ -75,7 +75,7 @@ export class PaymentPageComponent {
   //   billingAddress: '',
   // };
 
-  payment : Payment = {orderId : 3, name : "bharath ",email : "doflamingolaw2023@gmail.com",contact : " ",status: "PENDING", amount : this.calculateTotal(), address : " "}
+  payment : Payment = { name : "bharath ",email : "doflamingolaw2023@gmail.com",contact : " ",status: "PENDING", amount : this.calculateTotal(), address : " "}
   
    
   payNow(payment: Payment, event: Event): void {
